@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:dither="false"-->
+    <!--android:shape="oval"-->
+    <!--android:useLevel="false"-->
+    <!--android:visible="false">-->
+
+
+
+    <item android:state_pressed="true">
+
+        <shape android:dither="false"
+            android:shape="oval"
+            android:useLevel="false"
+            android:visible="false">
+
+
+            <solid android:color="#813bd8ff" />
+            <stroke
+                android:width="1dip"
+                android:color="#00ffffff" />
+            <padding
+                android:bottom="5dip"
+                android:left="5dip"
+                android:right="5dip"
+                android:top="5dip" />
+
+            <!-- 形狀大小 -->
+            <size
+                android:width="22dp"
+                android:height="22dp" />
+
+
+        </shape>
+
+    </item>
+
+
+    <item android:color="@android:color/black">
+
+        <shape android:dither="false"
+        android:shape="oval"
+        android:useLevel="false"
+        android:visible="false">
+
+
+        <solid android:color="#81ffffff" />
+        <stroke
+            android:width="1dip"
+            android:color="#00ffffff" />
+        <padding
+            android:bottom="5dip"
+            android:left="5dip"
+            android:right="5dip"
+            android:top="5dip" />
+
+        <!-- 形狀大小 -->
+        <size
+            android:width="22dp"
+            android:height="22dp" />
+
+
+        </shape>
+    </item>
+
+
+
+
+    <!--<solid android:color="#81ffffff" />-->
+    <!--<stroke-->
+        <!--android:width="1dip"-->
+        <!--android:color="#00ffffff" />-->
+    <!--<padding-->
+        <!--android:bottom="5dip"-->
+        <!--android:left="5dip"-->
+        <!--android:right="5dip"-->
+        <!--android:top="5dip" />-->
+
+    <!--&lt;!&ndash; 形狀大小 &ndash;&gt;-->
+    <!--<size-->
+        <!--android:width="22dp"-->
+        <!--android:height="22dp" />-->
+<!--</shape>-->
+
+</selector>
