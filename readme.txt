@@ -1,1 +1,1 @@
-root:\\Tesseract data
+root://tessdata/
