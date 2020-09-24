@@ -1766,8 +1766,8 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //                   200
 //            );
 
-                dstBmp = Bitmap.createBitmap(bmp, 0, bmp.getHeight()/2 -100, bmp.getWidth(), 100);
-
+                //dstBmp = Bitmap.createBitmap(bmp, 0, bmp.getHeight()/2 -100, bmp.getWidth(), 100);
+                dstBmp = Bitmap.createBitmap( resizedBitmap);
 
 
             }else{
@@ -1785,18 +1785,15 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 Utils.matToBitmap( denoisingColor, bmp);
 
 
-                dstBmp = Bitmap.createBitmap( bmp, 0, bmp.getHeight()/2 -100, bmp.getWidth(), 100);
+                //dstBmp = Bitmap.createBitmap( bmp, 0, bmp.getHeight()/2 -100, bmp.getWidth(), 100);
 
-
+                dstBmp = Bitmap.createBitmap( resizedBitmap);
                 //dstBmp = Bitmap.createBitmap(resizedBitmap, 0, resizedBitmap.getHeight()/2 -100, resizedBitmap.getWidth(), 100);
             }
-
-
-
-
+            
             final ImageView img2 = view.findViewById(R.id.img);
-            img2.setImageBitmap(dstBmp);
-
+            //img2.setImageBitmap(dstBmp);
+            img2.setVisibility(View.GONE);
 
             final TextView textView =  view.findViewById(R.id.textView);
            // TextView mtext = view.findViewById(R.id.text_o);

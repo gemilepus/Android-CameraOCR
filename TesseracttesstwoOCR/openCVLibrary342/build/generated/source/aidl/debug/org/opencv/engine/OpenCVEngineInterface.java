@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: C:\\Users\\user\\Downloads\\Tesseract-TesstwoORC\\TesseracttesstwoOCR\\openCVLibrary342\\src\\main\\aidl\\org\\opencv\\engine\\OpenCVEngineInterface.aidl
+ * Original file: E:\\Android-Camera-OCR\\TesseracttesstwoOCR\\openCVLibrary342\\src\\main\\aidl\\org\\opencv\\engine\\OpenCVEngineInterface.aidl
  */
 package org.opencv.engine;
 /**
