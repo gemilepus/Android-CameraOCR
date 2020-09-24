@@ -1767,7 +1767,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //            );
 
                 //dstBmp = Bitmap.createBitmap(bmp, 0, bmp.getHeight()/2 -100, bmp.getWidth(), 100);
-                dstBmp = Bitmap.createBitmap( resizedBitmap);
+                dstBmp = Bitmap.createBitmap( bmp);
 
 
             }else{
@@ -1787,10 +1787,10 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 
                 //dstBmp = Bitmap.createBitmap( bmp, 0, bmp.getHeight()/2 -100, bmp.getWidth(), 100);
 
-                dstBmp = Bitmap.createBitmap( resizedBitmap);
+                dstBmp = Bitmap.createBitmap( bmp);
                 //dstBmp = Bitmap.createBitmap(resizedBitmap, 0, resizedBitmap.getHeight()/2 -100, resizedBitmap.getWidth(), 100);
             }
-            
+
             final ImageView img2 = view.findViewById(R.id.img);
             //img2.setImageBitmap(dstBmp);
             img2.setVisibility(View.GONE);
