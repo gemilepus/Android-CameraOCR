@@ -179,8 +179,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         @Override
         public void onSurfaceTextureAvailable(SurfaceTexture texture, int width, int height) {
             openCamera(width, height);
-
-
         }
 
         @Override
@@ -196,7 +194,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         @Override
         public void onSurfaceTextureUpdated(SurfaceTexture texture) {
         }
-
     };
 
     /**
@@ -281,23 +278,16 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
      * This a callback object for the {@link ImageReader}. "onImageAvailable" will be called when a
      * still image is ready to be saved.
      */
-
     private DialogFragment newFragment;
-
     private boolean runThreadFlag = false;
     private int takepicNum = 1;
     private ArrayList<String> ArrayList_jpg;
-
-
     private boolean Click_takepicture = false;
-
 
     private final ImageReader.OnImageAvailableListener mOnImageAvailableListener = new ImageReader.OnImageAvailableListener() {
 
         @Override
         public void onImageAvailable(final ImageReader reader) {
-
-
             try {
                 final Image image = reader.acquireNextImage(); // O
                 if(!Click_takepicture ){
@@ -318,15 +308,11 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                         buffer.get(bytes);
                         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
-
                         // show_data_Dialog(bytes);
-
                         Bitmap bitmapM = Bitmap.createScaledBitmap(bitmap, 120, 120, false);
                         imageview.setImageBitmap(bitmapM);
                         //imageview.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.button_border));
-
                         //Toast.makeText( getActivity(),    "" , Toast.LENGTH_SHORT).show();
-
 
                         image.close();
                         //reader.close();
@@ -339,8 +325,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 
                         // Save File
                         //mBackgroundHandler.post(new ImageSaver( bytes , mFile));
-
-
 
                         FileOutputStream output = null;
                         try {
@@ -359,9 +343,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                             }
                         }
 
-
-                       // Toast.makeText( getActivity(),    "Save image : " + str_file , Toast.LENGTH_SHORT).show();
-
                         String [] list;
                         list =  getActivity().getExternalFilesDir(null).list();
                         // 順序 小 ~ 大
@@ -374,8 +355,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                                 //Toast.makeText( getActivity(),   list[i] , Toast.LENGTH_SHORT).show();
                             }
                         }
-
-
                         // DialogFragment.show() will take care of adding the fragment
                         // in a transaction.  We also want to remove any currently showing
                         // dialog, so make our own transaction and take care of that here.
@@ -390,10 +369,8 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                         newFragment = show_data_DialogFragment.newInstance(bytes , ArrayList_jpg  );
                         newFragment.show(ft, "dialog");
 
-
                         runThreadFlag = false;
                         takepicNum ++;
-
                     }
                 });
             }
@@ -402,32 +379,17 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 e.printStackTrace();
             }
 
-
-
-
-
-
-
-
-
-           //  final Image image = reader.acquireLatestImage(); // O
-
-
+//             final Image image = reader.acquireLatestImage(); // O
 //            ByteBuffer buffer = image.getPlanes()[0].getBuffer();
 //            byte[] mbytes = new byte[buffer.capacity()];
-
-            //mBackgroundHandler.post(new ImageSaver(reader.acquireNextImage(), mFile)); // o
+//
+//            mBackgroundHandler.post(new ImageSaver(reader.acquireNextImage(), mFile)); // o
 //            mBackgroundHandler.post(new ImageSaver( image , mFile));
-
-
-            //new  show_data_DialogFragment().show(getChildFragmentManager(), FRAGMENT_DIALOG);
-
-
-         //   Toast.makeText( getActivity(),    String.valueOf(takepicNum ) , Toast.LENGTH_SHORT).show();
-
-
-            // mFile = new File(getActivity().getExternalFilesDir(null), "pic.jpg");
-
+//
+//            new  show_data_DialogFragment().show(getChildFragmentManager(), FRAGMENT_DIALOG);
+//            Toast.makeText( getActivity(),    String.valueOf(takepicNum ) , Toast.LENGTH_SHORT).show();
+//             mFile = new File(getActivity().getExternalFilesDir(null), "pic.jpg");
+//
 //            Image image = reader.acquireNextImage();
 //            Toast.makeText( getActivity(),    "21321" , Toast.LENGTH_SHORT).show();
 //
@@ -437,18 +399,12 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //            Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 //            ImageButton imageview = getActivity().findViewById(R.id.info);
 //            imageview.setImageBitmap( bmp );
-
-
-
-
-
+//
 //            Timer buttonTimer = new Timer();
 //            buttonTimer.schedule(new TimerTask() {
-//
 //                @Override
 //                public void run() {
 //                    getActivity().runOnUiThread(new Runnable() {
-//
 //                        @Override
 //                        public void run() {
 //                            Image image = reader.acquireLatestImage();
@@ -457,17 +413,14 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //                    buffer.get(bytes);
 //                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 //                            Toast.makeText( getActivity(),    "take" , Toast.LENGTH_SHORT).show();
-//
 //                        }
 //                    });
 //                }
 //            }, 0);
-
-
-//            Image mImage = reader.acquireNextImage();
 //
+//            Image mImage = reader.acquireNextImage();
 //            Toast.makeText( getActivity(),     mImage.getHeight() , Toast.LENGTH_SHORT).show();
-           // TEST
+//            TEST
 //            ByteBuffer buffer =  mImage..getBuffer();
 //            byte[] bytes = new byte[buffer.capacity()];
 //            buffer.get(bytes);
@@ -476,10 +429,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //            ImageButton imageview = getActivity().findViewById(R.id.info);
 //            // Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(),  mImage );
 //            imageview.setImageBitmap(bitmapImage);
-
-
-
-
         }
 
     };
@@ -504,7 +453,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 
         @Override
         public void run() {
-
 //            ByteBuffer buffer = mImage.getPlanes()[0].getBuffer();
 //            byte[] bytes = new byte[buffer.remaining()];
 //            buffer.get(bytes);
@@ -524,14 +472,8 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                     }
                 }
             }
-
-
         }
-
     }
-
-
-
     /**
      * {@link CaptureRequest.Builder} for the camera preview
      */
@@ -698,8 +640,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         return new Camera2BasicFragment();
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_camera2_basic, container, false);
@@ -710,6 +650,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
     private  TextView text_room , text_v;
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
+
         Button delete_btn =  view.findViewById(R.id.delete_btn);
         delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -726,8 +667,19 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 }
             }});
 
-
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
+        // fix  java.lang.RuntimeException: Time out waiting to lock camera opening.
+
+        // When the screen is turned off and turned back on, the SurfaceTexture is already
+        // available, and "onSurfaceTextureAvailable" will not be called. In that case, we can open
+        // a camera and start preview from here (otherwise, we wait until the surface is ready in
+        // the SurfaceTextureListener).
+        if (mTextureView.isAvailable()) {
+            openCamera(mTextureView.getWidth(), mTextureView.getHeight());
+        } else {
+            mTextureView.setSurfaceTextureListener(mSurfaceTextureListener);
+        }
+
         mTextureView.setOnTouchListener(this);
         view.findViewById(R.id.picture).setOnClickListener(this);
         view.findViewById(R.id.info).setOnClickListener(this);
@@ -742,9 +694,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         imageButtonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, Camera2VideoFragment.newInstance()).commit();
-
             }
         });
 
@@ -783,89 +733,50 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                     }
 
 
-
-
-
                     //mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
-
                     mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_OFF);
 //                   mPreviewRequestBuilder.set(CaptureRequest.CONTROL_MODE, CaptureRequest.CONTROL_MODE_OFF);
-
                     //mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AE_EXPOSURE_COMPENSATION, value);
                     //mPreviewRequestBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, (long)value);
-
                     mPreviewRequestBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, (long)10000);
                     //mPreviewRequestBuilder.set(CaptureRequest.SENSOR_SENSITIVITY, value);
                     mPreviewRequestBuilder.set(CaptureRequest.SENSOR_SENSITIVITY, (10000 - 100) / 2);//设置 ISO，感光度
-
                     //mPreviewRequestBuilder.set(CaptureRequest.SCALER_CROP_REGION, mCropRegion);
-
                     try {
                         // Finally, we start displaying the camera preview.
                         mPreviewRequest = mPreviewRequestBuilder.build();
                         mCaptureSession.setRepeatingRequest(mPreviewRequest, mCaptureCallback, mBackgroundHandler);
-
                         //mCaptureSession.capture(mPreviewRequestBuilder.build(), mCaptureCallback, mBackgroundHandler);
                     } catch (CameraAccessException e) {
                         e.printStackTrace();
                     }
-
-
-
                 }
-
             }
         });
 
         seekBar.setMax( 3000 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
 
     //***************************************** OnClick******************************************
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonTest: {
-
-
-
                 mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
 
                 mPreviewRequestBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, (long)1);
                 mPreviewRequestBuilder.set(CaptureRequest.SENSOR_SENSITIVITY, 50);
                 //mPreviewRequestBuilder.set(CaptureRequest.SENSOR_SENSITIVITY, (10000 - 100) / 2);//设置 ISO，感光度
-
                 mPreviewRequestBuilder.set(CaptureRequest.SCALER_CROP_REGION, mCropRegion);
 
                 try {
                     // Finally, we start displaying the camera preview.
                     mPreviewRequest = mPreviewRequestBuilder.build();
                     mCaptureSession.setRepeatingRequest(mPreviewRequest, mCaptureCallback, mBackgroundHandler);
-
                     //mCaptureSession.capture(mPreviewRequestBuilder.build(), mCaptureCallback, mBackgroundHandler);
                 } catch (CameraAccessException e) {
                     e.printStackTrace();
                 }
-
-
                 break;
             }
             case R.id.picture: {
@@ -876,13 +787,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 final ImageButton imageButton = getActivity().findViewById(R.id.picture);
                 imageButton.setEnabled(false);
 
-
                 Toast.makeText( getActivity(),    String.valueOf(mPreviewRequest.get(CaptureRequest.SENSOR_EXPOSURE_TIME) ) , Toast.LENGTH_SHORT).show();
-
-
-
-
-
                 //Toast.makeText( getActivity(),    String.valueOf(mPreviewRequestBuilder.get(CaptureRequest.SENSOR_EXPOSURE_TIME) ) , Toast.LENGTH_SHORT).show();
 
 //                try {
@@ -890,16 +795,16 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 ////                    mPreviewRequestBuilder.addTarget(surface);
 //
 //                  //  requestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
-
-                    // This is how to tell the camera to lock focus.
-
+//
+//                     This is how to tell the camera to lock focus.
+//
 //                    mPreviewRequestBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, (long)1);
 //                    //mPreviewRequestBuilder.set(CaptureRequest.SENSOR_SENSITIVITY, 400);
 //
 //                    mPreviewRequestBuilder.set(CaptureRequest.SENSOR_SENSITIVITY, (10000 - 100) / 2);//设置 ISO，感光度
 //                    mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_ALWAYS_FLASH);
-
-
+//
+//
 //                    mPreviewRequest = mPreviewRequestBuilder.build();
 //                    mCaptureSession.setRepeatingRequest(mPreviewRequest,mCaptureCallback, mBackgroundHandler);
 //                    try {
@@ -907,12 +812,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //                    } catch (CameraAccessException e) {
 //                        Log.e(TAG, "setRepeatingRequest failed, " + e.getMessage());
 //                    }
-
-
-
-
-
-
+//
 
                     // Tell #mCaptureCallback to wait for the lock.
 //                    mCaptureSession.capture(mPreviewRequestBuilder.build(), mCaptureCallback, mBackgroundHandler);
@@ -920,40 +820,19 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //                    mCaptureSession.setRepeatingRequest(mPreviewRequestBuilder.build(), mCaptureCallback, mBackgroundHandler);
 
                    // mState = STATE_PREVIEW ; mCaptureSession.setRepeatingRequest(mPreviewRequest, mCaptureCallback, mBackgroundHandler);
-
-
-
                     // Reset the auto-focus trigger
 //                    mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_TRIGGER, CameraMetadata.CONTROL_AF_TRIGGER_CANCEL);
 //                    setAutoFlash(mPreviewRequestBuilder);
 //                    mCaptureSession.capture(mPreviewRequestBuilder.build(), mCaptureCallback, mBackgroundHandler);
                     // After this, the camera will go back to the normal state of preview.
                    // mState = STATE_PREVIEW ; mCaptureSession.setRepeatingRequest(mPreviewRequest, mCaptureCallback, mBackgroundHandler);
-
-
-
-//
 //                } catch (CameraAccessException e) {
 //                    e.printStackTrace();
 //                }
 
-
-
-
-
-
-
-
 //                builder.set(CaptureRequest.SENSOR_SENSITIVITY, isoValue);
 //                builder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, exposureTimeValueInMilliseconds);
-//
-//
-//
           //      CaptureSession.setRepeatingRequest
-
-
-
-
 
                 Timer buttonTimer = new Timer();
                 buttonTimer.schedule(new TimerTask() {
@@ -967,8 +846,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                             }});
                     }}, 1500);
 
-
-
                 break;
             }
             case R.id.info: {
@@ -979,11 +856,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //                            //.setMessage(R.string.intro_message)
 //                            .setPositiveButton(android.R.string.ok, null)
 //                            .show();
-
-
-
                 }
-
 
                 // DialogFragment.show() will take care of adding the fragment
                 // in a transaction.  We also want to remove any currently showing
@@ -1000,20 +873,16 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 newFragment =  new show_Album_DialogFragment();
                 newFragment.show(ft, "dialog");
 
-
                 break;
             }
         }
     }
-
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mFile = new File(getActivity().getExternalFilesDir(null), "pic.jpg");
     }
-
-
 
     /**
      * Sets up member variables related to camera.
@@ -1349,13 +1218,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
             captureBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
             setAutoFlash(captureBuilder);
 
-
-
-
-
-
-
-
             // Orientation
             int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, getOrientation(rotation));
@@ -1412,23 +1274,11 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //            mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
 //            mPreviewRequestBuilder.set(CaptureRequest.SCALER_CROP_REGION, mCropRegion);
 
-
-
-
             //setAutoFlash(mPreviewRequestBuilder);
             mCaptureSession.capture(mPreviewRequestBuilder.build(), mCaptureCallback, mBackgroundHandler);
 
 
 //            final CaptureRequest.Builder captureBuilder = camera.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
-
-
-
-
-
-
-
-
-
 
             // After this, the camera will go back to the normal state of preview.
             mState = STATE_PREVIEW;
@@ -1438,34 +1288,16 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         }
     }
 
-
-
-
-
-
     private boolean Flashonflag = true;
-
     private void setAutoFlash(CaptureRequest.Builder requestBuilder) {
         if (mFlashSupported && Flashonflag) {
-
             requestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
-
 //            if (Flashonflag == true) {
-//
 //                requestBuilder.set(CaptureRequest.CONTROL_AE_MODE,
 //                        CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
-//
-//
-//
-//
 //            }
         }
     }
-
-
-
-
-
 
     /**
      * Compares two {@code Size}s based on their areas.
@@ -1510,21 +1342,13 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                     })
                     .create();
         }
-
     }
-
-
 
     /**
      * Shows OK/Cancel confirmation dialog about camera permission.
      */
     public static class ConfirmationDialog extends DialogFragment {
-
-
     }
-
-
-
 
     private void requestCameraPermission() {
         if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
@@ -1544,9 +1368,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
-
-
-
 
 //***************************************** for UI ******************************************
 
@@ -1575,8 +1396,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //            finish();
 //            return;
 //        }
-
-
         CameraUtils.decodeBitmap(bytes, 1000, 1000, new CameraUtils.BitmapCallback() {
             @Override
             public void onBitmapReady(Bitmap bitmap) {
@@ -1598,9 +1417,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 // actualResolution.setMessage(bitmap.getWidth() + "x" + bitmap.getHeight() + " (" + finalRatio + ")");
             }
         });
-
-
-
 
         builder.setView(view);
         builder.setPositiveButton("繼續", new DialogInterface.OnClickListener() {
@@ -1629,8 +1445,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 
 
     //***************************************** for UI ******************************************
-
-
 
     /***********************************************DialogFragment *********************************************/
     public static class show_data_DialogFragment extends DialogFragment {
@@ -1684,7 +1498,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //        }
 
             int maxSize = 500;
-
             int outWidth;
             int outHeight;
             int inWidth = bitmap.getWidth();
@@ -1719,7 +1532,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 change_btn.setText(" Original");
             }
 
-
             Bitmap dstBmp;
             if(VariableEditor.Picture_type.equals("1")){
                 // Original Image
@@ -1737,7 +1549,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 // Imgproc.morphologyEx(gray, gradient, MORPH_GRADIENT, morphStructure);
                 Imgproc.morphologyEx(gray, gradient, MORPH_OPEN, morphStructure);
 
-
                 //Opening
                 // opening = cv.morphologyEx(img, cv.MORPH_OPEN, kernel)
 //            Mat gradientOpening  = new Mat();
@@ -1745,20 +1556,14 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //
 //            Imgproc.morphologyEx( gradient, gradientOpening , MORPH_GRADIENT, morphStructureOpening );
 
-
-
                 //Apply threshold to convert to binary image  using Otsu algorithm to choose the optimal threshold value to convert the processed image to binary image.
                 Mat binary = new Mat();
                 //Imgproc.threshold(gradient, binary, 20, 200, THRESH_BINARY | THRESH_OTSU);
 
                 Imgproc.threshold(gradient, binary, 80, 255, THRESH_BINARY );
 
-
-
-
                 final Bitmap bmp = Bitmap.createBitmap(  binary.cols(),  binary.rows() , Bitmap.Config.ARGB_8888);
                 Utils.matToBitmap( binary, bmp);
-
 
                 //  Bitmap.createBitmap(source, x, y, width, height)
 //            Bitmap dstBmp = Bitmap.createBitmap(bmp, 0, bmp.getHeight()/2 - bmp.getWidth()/2,
@@ -1776,17 +1581,13 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 Bitmap bmp32 = resizedBitmap.copy(Bitmap.Config.ARGB_8888, true);
                 Utils.bitmapToMat(bmp32, mat);
 
-
                 // 降噪
                 Mat denoisingColor = new Mat();
                 Photo.fastNlMeansDenoisingColored( mat , denoisingColor,10,10,7,21);
 
                 final Bitmap bmp = Bitmap.createBitmap( denoisingColor.cols(),  denoisingColor.rows() , Bitmap.Config.ARGB_8888);
                 Utils.matToBitmap( denoisingColor, bmp);
-
-
                 //dstBmp = Bitmap.createBitmap( bmp, 0, bmp.getHeight()/2 -100, bmp.getWidth(), 100);
-
                 dstBmp = Bitmap.createBitmap( bmp);
                 //dstBmp = Bitmap.createBitmap(resizedBitmap, 0, resizedBitmap.getHeight()/2 -100, resizedBitmap.getWidth(), 100);
             }
@@ -1816,32 +1617,22 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 btnOCR.setText("chi_tra");
             }
 
-
-
             String SD_PATH= Environment.getExternalStorageDirectory().getPath();
-
-
             TessBaseAPI baseApi = new TessBaseAPI();
             // 指定語言集，sd卡根目錄下放置Tesseract的tessdata資料夾
             baseApi.init(SD_PATH, VariableEditor.ORC_type );
-
             // 設置psm模式
 //            baseApi.setPageSegMode(TessBaseAPI.PageSegMode.PSM_SINGLE_LINE);
-
             baseApi.setPageSegMode(TessBaseAPI.PageSegMode.PSM_AUTO);
-
             // 設置圖片
             baseApi.setImage(  dstBmp );
             // baseApi.setImage(new File(SD_PATH + img));
-
             // 獲取結果
             final String result = baseApi.getUTF8Text();
             textView.setText(result);
             // 釋放記憶體
             baseApi.clear();
             baseApi.end();
-
-
 
             CameraUtils.decodeBitmap(mbyte, 1000, 1000, new CameraUtils.BitmapCallback() {
                 @Override
@@ -1865,8 +1656,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 }
             });
 
-
-
             // Inflate and set the layout for the dialog
             // Pass null as the parent view because its going in the dialog layout
             builder.setView(view);
@@ -1875,16 +1664,9 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 @Override
                 public void onClick(DialogInterface dialog, int id)
                 {
-
-
-
-
                     Toast.makeText( getActivity(),   "delete" +  mArrayList_jpg.get( mArrayList_jpg.size() -1 )  , Toast.LENGTH_SHORT).show();
                     File file = new File(getActivity().getExternalFilesDir(null),  mArrayList_jpg.get( mArrayList_jpg.size() -1 ));
                     boolean deleted = file.delete();
-
-
-
                 }});
             builder.setNegativeButton("繼續", new DialogInterface.OnClickListener() {
                 @Override
@@ -1901,14 +1683,11 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 
             return builder.create();
         }
-
     }
-
    /***********************************************DialogFragment *********************************************/
 
    /***********************************************DialogFragment Album*********************************************/
     public static class show_Album_DialogFragment extends DialogFragment {
-
         private ArrayList<String> ArrayList_jpg;
         private int show_image_index = 0;
 
@@ -1921,20 +1700,14 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
             // Get the layout inflater
             LayoutInflater inflater = getActivity().getLayoutInflater();
             View view = inflater.inflate(R.layout.album_picture_preview, null);
-
-
             final TextView text_no = view.findViewById(R.id.text_no);
             final ImageView imageViewtDialog = view.findViewById(R.id.image);
             final MessageView nativeCaptureResolution =  view.findViewById(R.id.nativeCaptureResolution);
 
-
             // read JPG file
             String [] list;
             list =  getActivity().getExternalFilesDir(null).list();
-            // 順序 小 ~ 大
-
             ArrayList_jpg = new ArrayList<String>();
-
             for(int i = 0; i <  list.length; i++){
                 if(list[i].endsWith(".jpg")){  // 過濾出jpg檔案
                     ArrayList_jpg.add(list[i]);
@@ -1942,14 +1715,8 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 }
             }
 
-
             text_no.setText( (show_image_index + 1) + " / " + ArrayList_jpg.size());
-
-
-
-            //Toast.makeText( getActivity(),  "read" + ArrayList_jpg.get(0)  , Toast.LENGTH_SHORT).show();
             File file = new File(getActivity().getExternalFilesDir(null),  ArrayList_jpg.get(0));
-
             String filePath = file.getPath();
             Bitmap bitmap = BitmapFactory.decodeFile(filePath);
 
@@ -1958,8 +1725,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
             AspectRatio nativeRatio = AspectRatio.of(nativeWidth, nativeHeight);
             nativeCaptureResolution.setTitle("原始解析度");
             nativeCaptureResolution.setMessage(nativeWidth + "x" + nativeHeight + " (" + nativeRatio + ")");
-
-
 
             final int maxSize = 800;
             int outWidth;
@@ -1975,10 +1740,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
             }
 
             Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, outWidth, outHeight, false);
-
             imageViewtDialog.setImageBitmap(resizedBitmap);
-
-
 
             final ImageButton rightbtn = view.findViewById(R.id.rightbtn);
             final ImageButton leftbtn = view.findViewById(R.id.leftbtn);
@@ -2003,7 +1765,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                            imageViewtDialog.setImageBitmap(bitmap);
                        }
                        else{
-
                            int nativeWidth  = bitmap.getWidth();
                            int nativeHeight = bitmap.getHeight();
                            AspectRatio nativeRatio = AspectRatio.of(nativeWidth, nativeHeight);
@@ -2022,22 +1783,15 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                                outHeight = maxSize;
                                outWidth = (inWidth * maxSize) / inHeight;
                            }
-
                            Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, outWidth, outHeight, false);
-
                            imageViewtDialog.setImageBitmap(resizedBitmap);
-
                        }
-
-
 
                        if(show_image_index == 0){
                            leftbtn.setVisibility(View.GONE);
                        }
                        text_no.setText( (show_image_index + 1) + " / " + ArrayList_jpg.size());
                        rightbtn.setVisibility(View.VISIBLE);
-
-
                    }else{
                        leftbtn.setVisibility(View.GONE);
 
@@ -2102,19 +1856,16 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 }
             });
 
-
             Button delbtn = view.findViewById(R.id.deletebtn);
             delbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     Toast.makeText( getActivity(),   "delete " +  ArrayList_jpg.get( show_image_index )  , Toast.LENGTH_SHORT).show();
                     File file = new File(getActivity().getExternalFilesDir(null),  ArrayList_jpg.get( show_image_index ));
                     boolean deleted = file.delete();
 
                     nativeCaptureResolution.setTitle("已刪除");
                     nativeCaptureResolution.setMessage("");
-
 
                     File filed = new File(getActivity().getExternalFilesDir(null),  ArrayList_jpg.get( show_image_index));
                     //Toast.makeText( getActivity(),  "read" + ArrayList_jpg.get( show_image_index)  , Toast.LENGTH_SHORT).show();
@@ -2150,7 +1901,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 
             return builder.create();
         }
-
     }
 
     /***********************************************DialogFragment Album*********************************************/
@@ -2161,37 +1911,27 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 case LoaderCallbackInterface.SUCCESS:
                 {
                     Log.i(TAG, "OpenCV loaded successfully");
-
-                } break;
+                }
+                break;
                 default:
                 {
                     super.onManagerConnected(status);
-                } break;
+                }
+                break;
             }
         }
     };
-
-
 
    @Override
    public void onResume() {
        super.onResume();
        startBackgroundThread();
 
-       // When the screen is turned off and turned back on, the SurfaceTexture is already
-       // available, and "onSurfaceTextureAvailable" will not be called. In that case, we can open
-       // a camera and start preview from here (otherwise, we wait until the surface is ready in
-       // the SurfaceTextureListener).
-       if (mTextureView.isAvailable()) {
-           openCamera(mTextureView.getWidth(), mTextureView.getHeight());
-       } else {
-           mTextureView.setSurfaceTextureListener(mSurfaceTextureListener);
-       }
 
 
        if (!OpenCVLoader.initDebug()) {
            Log.d(TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");
-           OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_0_0, getActivity() , mLoaderCallback);
+           OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_0_0, this.getActivity() , mLoaderCallback);
        } else {
            Log.d(TAG, "OpenCV library found inside package. Using it!");
            mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
@@ -2208,9 +1948,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         if(newFragment != null){
             newFragment.dismiss();
         }
-
     }
-
 
 
     /***********************************************            TEST             ***********************************************/
@@ -2255,7 +1993,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
             mCropRegion = new Rect(cx - hw, cy - hh, cx + hw, cy + hh);
         }
     }
-
 
     public Rect zoom ;
     public float finger_spacing = 0;
@@ -2321,13 +2058,4 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         float y = event.getY(0) - event.getY(1);
         return (float) Math.sqrt(x * x + y * y);
     }
-
-
-
-
-
-
-
-
-
 }
