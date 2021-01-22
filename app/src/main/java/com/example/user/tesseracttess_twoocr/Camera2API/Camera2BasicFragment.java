@@ -251,7 +251,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 activity.finish();
             }
         }
-
     };
 
     /**
@@ -289,9 +288,9 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         @Override
         public void onImageAvailable(final ImageReader reader) {
             try {
-                final Image image = reader.acquireNextImage(); // O
+                final Image image = reader.acquireNextImage();
                 if(!Click_takepicture ){
-                    image.close(); //
+                    image.close();
                 }
 
                 if(!runThreadFlag  &&  Click_takepicture ){
@@ -312,7 +311,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                         Bitmap bitmapM = Bitmap.createScaledBitmap(bitmap, 120, 120, false);
                         imageview.setImageBitmap(bitmapM);
                         //imageview.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.button_border));
-                        //Toast.makeText( getActivity(),    "" , Toast.LENGTH_SHORT).show();
 
                         image.close();
                         //reader.close();
@@ -320,7 +318,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                         // set File Name
                         String time_str = android.text.format.DateFormat.format("yyyyMMdd hhmmss", new java.util.Date()).toString();
                         //String.valueOf( takepicNum )
-                        String str_file =   time_str +".jpg";
+                        String str_file = time_str +".jpg";
                         mFile = new File(getActivity().getExternalFilesDir(null), str_file);
 
                         // Save File
@@ -352,7 +350,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                         for(int i = 0; i <  list.length; i++){
                             if(list[i].endsWith(".jpg")){  // 過濾出jpg檔案
                                 ArrayList_jpg.add(list[i]);
-                                //Toast.makeText( getActivity(),   list[i] , Toast.LENGTH_SHORT).show();
                             }
                         }
                         // DialogFragment.show() will take care of adding the fragment
@@ -605,7 +602,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 
     private static Size chooseOptimalSize(Size[] choices, int textureViewWidth,
                                           int textureViewHeight, int maxWidth, int maxHeight, Size aspectRatio) {
-
         // Collect the supported resolutions that are at least as big as the preview Surface
         List<Size> bigEnough = new ArrayList<>();
         // Collect the supported resolutions that are smaller than the preview Surface
@@ -698,7 +694,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
             }
         });
 
-
         seekBar =  view.findViewById(R.id.seekBar);
         seekBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -722,8 +717,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                     text_v.setText(String.valueOf(progress) );
                     int value = progress;
 
-
-
                     final CaptureRequest.Builder captureBuilder;
                     try {
                         captureBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
@@ -731,7 +724,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                     } catch (CameraAccessException e) {
                         e.printStackTrace();
                     }
-
 
                     //mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
                     mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_OFF);
@@ -793,46 +785,32 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //                try {
 ////                    mPreviewRequestBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_MANUAL);
 ////                    mPreviewRequestBuilder.addTarget(surface);
-//
 //                  //  requestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
 //
 //                     This is how to tell the camera to lock focus.
-//
 //                    mPreviewRequestBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, (long)1);
 //                    //mPreviewRequestBuilder.set(CaptureRequest.SENSOR_SENSITIVITY, 400);
-//
 //                    mPreviewRequestBuilder.set(CaptureRequest.SENSOR_SENSITIVITY, (10000 - 100) / 2);//设置 ISO，感光度
 //                    mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_ALWAYS_FLASH);
-//
-//
 //                    mPreviewRequest = mPreviewRequestBuilder.build();
 //                    mCaptureSession.setRepeatingRequest(mPreviewRequest,mCaptureCallback, mBackgroundHandler);
-//                    try {
-//
-//                    } catch (CameraAccessException e) {
-//                        Log.e(TAG, "setRepeatingRequest failed, " + e.getMessage());
-//                    }
-//
 
-                    // Tell #mCaptureCallback to wait for the lock.
+//                     Tell #mCaptureCallback to wait for the lock.
 //                    mCaptureSession.capture(mPreviewRequestBuilder.build(), mCaptureCallback, mBackgroundHandler);
-//
 //                    mCaptureSession.setRepeatingRequest(mPreviewRequestBuilder.build(), mCaptureCallback, mBackgroundHandler);
-
-                   // mState = STATE_PREVIEW ; mCaptureSession.setRepeatingRequest(mPreviewRequest, mCaptureCallback, mBackgroundHandler);
-                    // Reset the auto-focus trigger
+//                    mState = STATE_PREVIEW ; mCaptureSession.setRepeatingRequest(mPreviewRequest, mCaptureCallback, mBackgroundHandler);
+//                     Reset the auto-focus trigger
 //                    mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_TRIGGER, CameraMetadata.CONTROL_AF_TRIGGER_CANCEL);
 //                    setAutoFlash(mPreviewRequestBuilder);
 //                    mCaptureSession.capture(mPreviewRequestBuilder.build(), mCaptureCallback, mBackgroundHandler);
-                    // After this, the camera will go back to the normal state of preview.
-                   // mState = STATE_PREVIEW ; mCaptureSession.setRepeatingRequest(mPreviewRequest, mCaptureCallback, mBackgroundHandler);
+//                     After this, the camera will go back to the normal state of preview.
+//                    mState = STATE_PREVIEW ; mCaptureSession.setRepeatingRequest(mPreviewRequest, mCaptureCallback, mBackgroundHandler);
 //                } catch (CameraAccessException e) {
 //                    e.printStackTrace();
 //                }
-
 //                builder.set(CaptureRequest.SENSOR_SENSITIVITY, isoValue);
 //                builder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, exposureTimeValueInMilliseconds);
-          //      CaptureSession.setRepeatingRequest
+//                CaptureSession.setRepeatingRequest
 
                 Timer buttonTimer = new Timer();
                 buttonTimer.schedule(new TimerTask() {
@@ -849,7 +827,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 break;
             }
             case R.id.info: {
-
                 Activity activity = getActivity();
                 if (null != activity) {
 //                    new AlertDialog.Builder(activity)
@@ -991,7 +968,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         } catch (NullPointerException e) {
             // Currently an NPE is thrown when the Camera2API is used but not supported on the
             // device this code runs.
-
         }
     }
 
@@ -1273,10 +1249,8 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //            // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //            mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
 //            mPreviewRequestBuilder.set(CaptureRequest.SCALER_CROP_REGION, mCropRegion);
-
             //setAutoFlash(mPreviewRequestBuilder);
             mCaptureSession.capture(mPreviewRequestBuilder.build(), mCaptureCallback, mBackgroundHandler);
-
 
 //            final CaptureRequest.Builder captureBuilder = camera.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
 
@@ -1310,7 +1284,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
             return Long.signum((long) lhs.getWidth() * lhs.getHeight() -
                     (long) rhs.getWidth() * rhs.getHeight());
         }
-
     }
 
     /**
@@ -1369,98 +1342,17 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         }
     }
 
-//***************************************** for UI ******************************************
-
-    private AlertDialog dialog_show;
-    private void show_data_Dialog(byte[] bytes  ) {   //  onEndOfErrorDumpThread
-        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder( getActivity() );
-        // android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this, R.style.DialogTheme); //style
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.activity_picture_preview, null);
-
-
-
-        final ImageView imageViewtDialog = view.findViewById(R.id.image);
-        final MessageView nativeCaptureResolution =  view.findViewById(R.id.nativeCaptureResolution);
-        // final MessageView actualResolution = findViewById(R.id.actualResolution);
-        // final MessageView approxUncompressedSize = findViewById(R.id.approxUncompressedSize);
-       // final MessageView captureLatency =  view.findViewById(R.id.captureLatency);
-
-//        final long delay = getIntent().getLongExtra("delay", 0);
-        final int nativeWidth  = bitmap.getWidth();
-        final int nativeHeight = bitmap.getHeight();
-//        byte[] b = image == null ? null : image.get();
-//        if (b == null) {
-//            finish();
-//            return;
-//        }
-        CameraUtils.decodeBitmap(bytes, 1000, 1000, new CameraUtils.BitmapCallback() {
-            @Override
-            public void onBitmapReady(Bitmap bitmap) {
-                imageViewtDialog.setImageBitmap(bitmap);
-
-                // approxUncompressedSize.setTitle("Approx. uncompressed size");
-                // approxUncompressedSize.setMessage(getApproximateFileMegabytes(bitmap) + "MB");
-
-               // captureLatency.setTitle("Approx. capture latency");
-               // captureLatency.setMessage(delay + " milliseconds");
-
-                // ncr and ar might be different when cropOutput is true.
-                AspectRatio nativeRatio = AspectRatio.of(nativeWidth, nativeHeight);
-                nativeCaptureResolution.setTitle("原始解析度");
-                nativeCaptureResolution.setMessage(nativeWidth + "x" + nativeHeight + " (" + nativeRatio + ")");
-
-                // AspectRatio finalRatio = AspectRatio.of(bitmap.getWidth(), bitmap.getHeight());
-                 //actualResolution.setTitle("Actual resolution");
-                // actualResolution.setMessage(bitmap.getWidth() + "x" + bitmap.getHeight() + " (" + finalRatio + ")");
-            }
-        });
-
-        builder.setView(view);
-        builder.setPositiveButton("繼續", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        builder.setNegativeButton("上傳", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        dialog_show = builder.create();
-        dialog_show.show();
-        dialog_show.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog_show.dismiss();
-
-            }
-        });
-    }
-
-
-    //***************************************** for UI ******************************************
-
     /***********************************************DialogFragment *********************************************/
     public static class show_data_DialogFragment extends DialogFragment {
-
         byte[] mbyte;
         ArrayList<String> mArrayList_jpg;
-
         static show_data_DialogFragment newInstance( byte[] bytes , ArrayList<String> ArrayList_jpg) {
             show_data_DialogFragment f = new show_data_DialogFragment();
 
             // Supply num input as an argument.
             Bundle args = new Bundle();
-
             args.putByteArray("num", bytes);
             args.putStringArrayList("ArrayList_jpg" , ArrayList_jpg);
-
             f.setArguments(args);
 
             return f;
@@ -1474,13 +1366,10 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
             mArrayList_jpg = getArguments().getStringArrayList("ArrayList_jpg");
 
             Bitmap bitmap = BitmapFactory.decodeByteArray(  mbyte, 0 , mbyte.length);
-
-
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             // Get the layout inflater
             LayoutInflater inflater = getActivity().getLayoutInflater();
             View view = inflater.inflate(R.layout.activity_picture_preview, null);
-
 
             final ImageView imageViewtDialog = view.findViewById(R.id.image);
             final MessageView nativeCaptureResolution =  view.findViewById(R.id.nativeCaptureResolution);
@@ -1511,7 +1400,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
             }
 
             Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, outWidth, outHeight, false);
-
 
             final Button change_btn = view.findViewById(R.id.change_btn);
             change_btn.setOnClickListener(new View.OnClickListener() {
@@ -1674,12 +1562,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 {
 
                 }});
-            builder.setPositiveButton("上傳", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int id)
-                {
-
-                }});
 
             return builder.create();
         }
@@ -1836,10 +1718,8 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                                 outHeight = maxSize;
                                 outWidth = (inWidth * maxSize) / inHeight;
                             }
-
                             Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, outWidth, outHeight, false);
                             imageViewtDialog.setImageBitmap(resizedBitmap);
-
                         }
 
                         text_no.setText( (show_image_index + 1) + " / " + ArrayList_jpg.size());
@@ -1847,12 +1727,10 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                         if(show_image_index == ArrayList_jpg.size() -1){
                             rightbtn.setVisibility(View.GONE);
                         }
-
                     }
                     else{
                         rightbtn.setVisibility(View.GONE);
                     }
-
                 }
             });
 
@@ -1873,7 +1751,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                     String filePath = filed.getPath();
                     Bitmap bitmap = BitmapFactory.decodeFile(filePath);
                     imageViewtDialog.setImageBitmap(bitmap);
-
                 }
             });
 
@@ -1885,7 +1762,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 
                 }
             });
-
             Button upbtn = view.findViewById(R.id.upbtn);
             upbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -1926,9 +1802,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
    public void onResume() {
        super.onResume();
        startBackgroundThread();
-
-
-
        if (!OpenCVLoader.initDebug()) {
            Log.d(TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");
            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_0_0, this.getActivity() , mLoaderCallback);
@@ -1950,7 +1823,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         }
     }
 
-
     /***********************************************            TEST             ***********************************************/
     // 棄用
     private Rect mCropRegion;
@@ -1969,7 +1841,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 
         // 最大ズームサイズ
         float max = characteristics.get(CameraCharacteristics.SCALER_AVAILABLE_MAX_DIGITAL_ZOOM);
-
         seekBar.setMax( (int)max*10 );
 
         if ( max < level || mCurrentZoomLevel == level) {
@@ -2039,8 +1910,6 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 // Finally, we start displaying the camera preview.
                 mPreviewRequest = mPreviewRequestBuilder.build();// ++ TEST
                 mCaptureSession.setRepeatingRequest(mPreviewRequest, mCaptureCallback, mBackgroundHandler);// ++ TEST
-
-
             } catch (CameraAccessException e) {
                 e.printStackTrace();
             } catch (NullPointerException ex) {
@@ -2057,5 +1926,74 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         float x = event.getX(0) - event.getX(1);
         float y = event.getY(0) - event.getY(1);
         return (float) Math.sqrt(x * x + y * y);
+    }
+
+    private AlertDialog dialog_show;
+    private void show_data_Dialog(byte[] bytes  ) {   //  onEndOfErrorDumpThread
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder( getActivity() );
+        // android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this, R.style.DialogTheme); //style
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.activity_picture_preview, null);
+
+        final ImageView imageViewtDialog = view.findViewById(R.id.image);
+        final MessageView nativeCaptureResolution =  view.findViewById(R.id.nativeCaptureResolution);
+//        final MessageView actualResolution = findViewById(R.id.actualResolution);
+//        final MessageView approxUncompressedSize = findViewById(R.id.approxUncompressedSize);
+//        final MessageView captureLatency =  view.findViewById(R.id.captureLatency);
+
+//        final long delay = getIntent().getLongExtra("delay", 0);
+        final int nativeWidth  = bitmap.getWidth();
+        final int nativeHeight = bitmap.getHeight();
+//        byte[] b = image == null ? null : image.get();
+//        if (b == null) {
+//            finish();
+//            return;
+//        }
+        CameraUtils.decodeBitmap(bytes, 1000, 1000, new CameraUtils.BitmapCallback() {
+            @Override
+            public void onBitmapReady(Bitmap bitmap) {
+                imageViewtDialog.setImageBitmap(bitmap);
+
+                // approxUncompressedSize.setTitle("Approx. uncompressed size");
+                // approxUncompressedSize.setMessage(getApproximateFileMegabytes(bitmap) + "MB");
+
+                // captureLatency.setTitle("Approx. capture latency");
+                // captureLatency.setMessage(delay + " milliseconds");
+
+                // ncr and ar might be different when cropOutput is true.
+                AspectRatio nativeRatio = AspectRatio.of(nativeWidth, nativeHeight);
+                nativeCaptureResolution.setTitle("原始解析度");
+                nativeCaptureResolution.setMessage(nativeWidth + "x" + nativeHeight + " (" + nativeRatio + ")");
+
+                // AspectRatio finalRatio = AspectRatio.of(bitmap.getWidth(), bitmap.getHeight());
+                //actualResolution.setTitle("Actual resolution");
+                // actualResolution.setMessage(bitmap.getWidth() + "x" + bitmap.getHeight() + " (" + finalRatio + ")");
+            }
+        });
+
+        builder.setView(view);
+        builder.setPositiveButton("繼續", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setNegativeButton("上傳", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog_show = builder.create();
+        dialog_show.show();
+        dialog_show.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_show.dismiss();
+            }
+        });
     }
 }
