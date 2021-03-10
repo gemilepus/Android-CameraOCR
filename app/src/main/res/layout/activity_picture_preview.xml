@@ -61,11 +61,6 @@
             android:layout_height="wrap_content"
             app:srcCompat="@mipmap/ic_launcher" />
 
-        <com.example.user.tesseracttess_twoocr.Camera2API.MessageView
-            android:id="@+id/nativeCaptureResolution"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
         <!-- com.otaliastudios.cameraview.demo.MessageView
             android:id="@+id/actualResolution"
             android:layout_width="match_parent"
@@ -75,6 +70,11 @@
             android:id="@+id/approxUncompressedSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/-->
+
+        <com.example.user.tesseracttess_twoocr.Camera2API.MessageView
+            android:id="@+id/nativeCaptureResolution"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <com.example.user.tesseracttess_twoocr.Camera2API.MessageView
             android:id="@+id/captureLatency"

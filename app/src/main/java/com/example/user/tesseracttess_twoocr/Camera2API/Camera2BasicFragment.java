@@ -1348,13 +1348,11 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 outHeight = maxSize;
                 outWidth = (inWidth * maxSize) / inHeight;
             }
-            Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, outWidth, outHeight, false);
-
-            //Bitmap resizedBitmap = bitmap;
+            //Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, outWidth, outHeight, false);
+            Bitmap resizedBitmap = bitmap;
 
             Bitmap dstBmp;
             if(VariableEditor.Picture_type.equals("1")){
-
                 // Original Image
                 Mat mat = new Mat();
                 Bitmap bmp32 = resizedBitmap.copy(Bitmap.Config.ARGB_8888, true);
@@ -1370,6 +1368,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 // Imgproc.morphologyEx(gray, gradient, MORPH_GRADIENT, morphStructure);
                 Imgproc.morphologyEx(gray, gradient, MORPH_OPEN, morphStructure);
 
+
                 //Opening
                 // opening = cv.morphologyEx(img, cv.MORPH_OPEN, kernel)
 //            Mat gradientOpening  = new Mat();
@@ -1377,15 +1376,30 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
 //
 //            Imgproc.morphologyEx( gradient, gradientOpening , MORPH_GRADIENT, morphStructureOpening );
 
+
+
                 //Apply threshold to convert to binary image  using Otsu algorithm to choose the optimal threshold value to convert the processed image to binary image.
                 Mat binary = new Mat();
                 //Imgproc.threshold(gradient, binary, 20, 200, THRESH_BINARY | THRESH_OTSU);
 
                 Imgproc.threshold(gradient, binary, 80, 255, THRESH_BINARY );
 
+
+
+
                 final Bitmap bmp = Bitmap.createBitmap(  binary.cols(),  binary.rows() , Bitmap.Config.ARGB_8888);
                 Utils.matToBitmap( binary, bmp);
+
+
+                //  Bitmap.createBitmap(source, x, y, width, height)
+//            Bitmap dstBmp = Bitmap.createBitmap(bmp, 0, bmp.getHeight()/2 - bmp.getWidth()/2,
+//                    bmp.getWidth(),
+//                   200
+//            );
+
+                //dstBmp = Bitmap.createBitmap(bmp, 0, bmp.getHeight()/2 -100, bmp.getWidth(), 100);
                 dstBmp = Bitmap.createBitmap( bmp);
+
 
             }else{
                 // Original Image
@@ -1393,18 +1407,24 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                 Bitmap bmp32 = resizedBitmap.copy(Bitmap.Config.ARGB_8888, true);
                 Utils.bitmapToMat(bmp32, mat);
 
-                // 降噪
-                Mat mMat = new Mat();
-                Photo.fastNlMeansDenoisingColored( mat , mMat,10,10,7,21);
 
-                final Bitmap bmp = Bitmap.createBitmap( mMat.cols(),  mMat.rows() , Bitmap.Config.ARGB_8888);
-                Utils.matToBitmap( mMat, bmp);
+                // 降噪
+                Mat denoisingColor = new Mat();
+                Photo.fastNlMeansDenoisingColored( mat , denoisingColor,10,10,7,21);
+
+                final Bitmap bmp = Bitmap.createBitmap( denoisingColor.cols(),  denoisingColor.rows() , Bitmap.Config.ARGB_8888);
+                Utils.matToBitmap( denoisingColor, bmp);
+
+
+                //dstBmp = Bitmap.createBitmap( bmp, 0, bmp.getHeight()/2 -100, bmp.getWidth(), 100);
+
                 dstBmp = Bitmap.createBitmap( bmp);
+                //dstBmp = Bitmap.createBitmap(resizedBitmap, 0, resizedBitmap.getHeight()/2 -100, resizedBitmap.getWidth(), 100);
             }
 
             final ImageView OutpusImageView = view.findViewById(R.id.img);
-            //OutpusImageView.setImageBitmap(dstBmp);
-            OutpusImageView.setVisibility(View.GONE);
+            OutpusImageView.setImageBitmap(dstBmp);
+            //OutpusImageView.setVisibility(View.GONE);
 
             final TextView textView =  view.findViewById(R.id.textView);
             // TextView mtext = view.findViewById(R.id.text_o);
