@@ -16,9 +16,12 @@
 
 package com.example.user.tesseracttess_twoocr.Camera2API;
 
+import static org.opencv.imgproc.Imgproc.MORPH_ELLIPSE;
+import static org.opencv.imgproc.Imgproc.MORPH_OPEN;
+import static org.opencv.imgproc.Imgproc.THRESH_BINARY;
+
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,7 +29,6 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.Point;
@@ -57,6 +59,8 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
@@ -73,9 +77,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.user.tesseracttess_twoocr.Camera2API.MessageView;
 import com.example.user.tesseracttess_twoocr.R;
-
 import com.example.user.tesseracttess_twoocr.VariableEditor;
 import com.googlecode.tesseract.android.TessBaseAPI;
 import com.otaliastudios.cameraview.AspectRatio;
@@ -102,14 +104,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
-
-import static org.opencv.imgproc.Imgproc.MORPH_CLOSE;
-import static org.opencv.imgproc.Imgproc.MORPH_ELLIPSE;
-import static org.opencv.imgproc.Imgproc.MORPH_GRADIENT;
-import static org.opencv.imgproc.Imgproc.MORPH_OPEN;
-import static org.opencv.imgproc.Imgproc.THRESH_BINARY;
-import static org.opencv.imgproc.Imgproc.THRESH_OTSU;
-import static org.opencv.photo.Photo.INPAINT_NS;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Camera2BasicFragment extends Fragment implements View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback , View.OnTouchListener {
@@ -517,7 +511,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
      * @param text The message to show
      */
     private void showToast(final String text) {
-        final Activity activity = getActivity();
+        final Activity activity = this.getActivity();
         if (activity != null) {
             activity.runOnUiThread(new Runnable() {
                 @Override
@@ -708,8 +702,9 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
             }
             case R.id.picture: {
 
-                takePicture();
                 Click_takepicture = true;
+                takePicture();
+
 
                 final ImageButton imageButton = getActivity().findViewById(R.id.picture);
                 imageButton.setEnabled(false);

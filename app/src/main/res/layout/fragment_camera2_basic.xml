@@ -14,6 +14,7 @@
  limitations under the License.
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -71,7 +72,7 @@
 
             android:background="@drawable/badge_circle_gray"
 
-            android:src="@android:drawable/ic_menu_camera" />
+            app:srcCompat="@android:drawable/ic_menu_camera" />
 
 
         <ImageButton
@@ -83,7 +84,7 @@
             android:layout_marginLeft="40dp"
             android:background="@drawable/badge_circle_gray"
 
-            android:src="@android:drawable/radiobutton_off_background" />
+            app:srcCompat="@android:drawable/radiobutton_off_background" />
 
         <ImageButton
             android:id="@+id/info"
@@ -95,7 +96,7 @@
 
             android:background="@drawable/button_border"
 
-            android:src="@android:drawable/ic_menu_gallery" />
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     </FrameLayout>
 
@@ -107,7 +108,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
-        android:text="TEST" />
+        android:text="TEST"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/text_room"
