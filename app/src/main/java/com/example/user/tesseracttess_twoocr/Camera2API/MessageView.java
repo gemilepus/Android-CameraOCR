@@ -2,7 +2,7 @@ package com.example.user.tesseracttess_twoocr.Camera2API;
 
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
